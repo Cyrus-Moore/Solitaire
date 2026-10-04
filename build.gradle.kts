@@ -1,5 +1,7 @@
 plugins {
     id("java")
+    id("application")
+    id("org.openjfx.javafxplugin") version "0.1.0"
 }
 
 group = "dev.cyrusmoore"
@@ -17,4 +19,14 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+}
+
+application {
+    mainClass.set("dev.cyrusmoore.solitaire.Main")
+    applicationDefaultJvmArgs = listOf("--enable-native-access=javafx.graphics")
+}
+
+javafx {
+    version = "27"
+    modules = listOf("javafx.controls", "javafx.media")
 }
